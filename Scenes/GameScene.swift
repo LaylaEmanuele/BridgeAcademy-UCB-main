@@ -8,9 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-#if os(macOS)
-import AppKit
-#endif
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
@@ -156,7 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    #if os(iOS)
+    
     //MARK: - Touch methods
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -172,15 +170,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 
-    #elseif os(macOS)
 
-    override func keyDown(with event: NSEvent) {
-        super.keyDown(with: event)
-        if event.keyCode == 49 { //space bar keyCode
-            userInteraction()
-        }
-    }
 
-    #endif
+    
 
 }
