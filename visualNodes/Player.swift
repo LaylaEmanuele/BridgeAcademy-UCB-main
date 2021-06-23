@@ -16,17 +16,7 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
 
     private static var runAnimation: SKAction {
         get {
-            let run1 = SKTexture(imageNamed: "sapo_idle_1")
-            let run2 = SKTexture(imageNamed: "sapo_idle_2")
-            let run3 = SKTexture(imageNamed: "sapo_idle_3")
-            let run4 = SKTexture(imageNamed: "sapo_idle_4")
-            let run5 = SKTexture(imageNamed: "sapo_idle_5")
-            let run6 = SKTexture(imageNamed: "sapo_idle_6")
-
-            
-
-
-            let runTexture = [run1, run2, run3, run4, run5, run6]
+            let runTexture: [SKTexture] = getWindTextures()
             let runAnimation = SKAction.animate(with: runTexture, timePerFrame: 0.1, resize: false, restore: true)
             let foreverRun = SKAction.repeatForever(runAnimation)
 
@@ -34,13 +24,20 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         }
     }
 
-
-
-
     public func run() {
         run(Player.runAnimation)
     }
+}
 
-
-
+func getWindTextures() -> [SKTexture] {
+    var textures = [SKTexture]()
+    for i in 1...6 {
+        
+        let texture = SKTexture(imageNamed: "sapo_idle_\(i)")
+        texture.filteringMode = .nearest
+        textures.append(texture)
+        
+    }
+    
+    return textures
 }

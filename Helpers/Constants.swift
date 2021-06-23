@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-let kPlatformHeight: CGFloat = 60.0
+let kPlatformHeight: CGFloat = 40.0
 let kCoinWidthHeight: CGFloat = 120
 
 let kPlayerCategory: UInt32 = 1
