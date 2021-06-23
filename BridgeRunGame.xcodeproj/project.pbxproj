@@ -33,7 +33,6 @@
 		CD46AC35267BB9D400BF11C2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CD46AC38267BB9D400BF11C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD46AC3A267BB9D500BF11C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CD46AC3C267BB9D500BF11C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD46AC4A267BBB1E00BF11C2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CD46AC4C267BBB3400BF11C2 /* ScrollingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingBackground.swift; sourceTree = "<group>"; };
 		CD46AC4E267BBB4300BF11C2 /* Plataform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plataform.swift; sourceTree = "<group>"; };
@@ -83,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				CD46AC31267BB9D400BF11C2 /* Actions.sks */,
-				CD46AC3C267BB9D500BF11C2 /* Info.plist */,
 			);
 			path = BridgeRunGame;
 			sourceTree = "<group>";
@@ -378,7 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WS398ST7LH;
+				DEVELOPMENT_TEAM = 9HBFB9D4T4;
 				INFOPLIST_FILE = BridgeRunGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -396,7 +394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WS398ST7LH;
+				DEVELOPMENT_TEAM = 9HBFB9D4T4;
 				INFOPLIST_FILE = BridgeRunGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
