@@ -77,6 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(platformsNode)
             platformsNode.position = self.position
             platformsNode.zPosition = 2
+            
         }
 
         coinsCounter = childNode(withName: "CoinsCounter") as? CoinsCounter
@@ -135,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func userInteraction() {
         if jumps < kJumps {
             jumps += 1
-            player?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 200.0)) //impulse vs force?
+            player?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180)) //impulse vs force?
         }
     }
 

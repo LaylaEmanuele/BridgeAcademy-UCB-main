@@ -11,19 +11,19 @@ import UIKit
 extension UIColor {
 
     class func platformColor() -> UIColor {
-        return UIColor().hexStringToUIColor(hex: "#5E5573")
+        return UIColor().hexStringToUIColor(hex: "#4B8672")
     }
 
     class func floorColor() -> UIColor {
-        return UIColor().hexStringToUIColor(hex: "#A7EBF2")
+        return UIColor().hexStringToUIColor(hex: "#254024")
     }
 
     class func groundColor() -> UIColor {
-        return UIColor().hexStringToUIColor(hex: "#201D26")
+        return UIColor().hexStringToUIColor(hex: "#254024")
     }
 
     class func coinsTextColor() -> UIColor {
-        return UIColor().hexStringToUIColor(hex: "#7D6AA6")
+        return UIColor().hexStringToUIColor(hex: "#D8F2E8")
     }
 
     private func hexStringToUIColor(hex:String) -> UIColor {
