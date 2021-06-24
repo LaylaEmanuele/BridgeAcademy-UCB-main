@@ -32,6 +32,7 @@ class CoinsCounter: SKSpriteNode {
         if let label = self.label {
             label.fontColor = UIColor.coinsTextColor()
             label.text = "\(numberOfCoins)"
+            
         }
     }
 

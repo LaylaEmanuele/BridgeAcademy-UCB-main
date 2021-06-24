@@ -62,7 +62,7 @@ class PlatformsGenerator {
 
         let platform = Platform(color: .platformColor(), size: randomSize)
         platform.configure()
-        platform.setScale(0.50) //Aqui ele defini o tamanho da plataforma
+        platform.setScale(0.90) //Aqui ele defini o tamanho da plataforma
 
         return platform
     }

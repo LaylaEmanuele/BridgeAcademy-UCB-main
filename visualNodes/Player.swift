@@ -33,7 +33,7 @@ func getWindTextures() -> [SKTexture] {
     var textures = [SKTexture]()
     for i in 1...6 {
         
-        let texture = SKTexture(imageNamed: "sapo_idle_\(i)")
+        let texture = SKTexture(imageNamed: "Player_\(i)")
         texture.filteringMode = .nearest
         textures.append(texture)
         
