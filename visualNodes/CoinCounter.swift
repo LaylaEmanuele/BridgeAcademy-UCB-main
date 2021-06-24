@@ -16,8 +16,8 @@ class CoinsCounter: SKSpriteNode {
     private var numberOfCoins = 0
 
     public func configure() {
-        position = CGPoint(x: position.x,
-                           y: UIScreen.main.bounds.width / 5 - kUIHeightMargin)
+      //  position = CGPoint(x: position.x,
+          //                 y: UIScreen.main.bounds.width / 5 - kUIHeightMargin)
         configureLabel()
     }
 
