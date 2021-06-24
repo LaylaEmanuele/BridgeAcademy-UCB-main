@@ -57,6 +57,7 @@
 		CD46AC21267BB9D400BF11C2 = {
 			isa = PBXGroup;
 			children = (
+				CD63C2BB2684257D00400120 /* Menu */,
 				CD46AC49267BBAB700BF11C2 /* SuportingFiles */,
 				CD46AC48267BBA7F00BF11C2 /* StoryBoards */,
 				CD46AC47267BBA6100BF11C2 /* Scenes */,
@@ -154,6 +155,13 @@
 				CD46AC2D267BB9D400BF11C2 /* AppDelegate.swift */,
 			);
 			path = SuportingFiles;
+			sourceTree = "<group>";
+		};
+		CD63C2BB2684257D00400120 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,7 +384,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WS398ST7LH;
+				DEVELOPMENT_TEAM = 9HBFB9D4T4;
 				INFOPLIST_FILE = BridgeRunGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -394,7 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WS398ST7LH;
+				DEVELOPMENT_TEAM = 9HBFB9D4T4;
 				INFOPLIST_FILE = BridgeRunGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
