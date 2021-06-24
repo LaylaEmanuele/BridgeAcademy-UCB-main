@@ -11,7 +11,7 @@ import GameplayKit
 
 class PlatformsGenerator {
 
-    private let kMaxPlatformsOnScreen = 5
+    private let kMaxPlatformsOnScreen = 8
     private let kMinSpace: Int = 120
 
     private let randomDistribPlatformWidth = GKRandomDistribution(lowestValue: 150, highestValue: 500)
