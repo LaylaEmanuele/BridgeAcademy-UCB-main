@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private let kMountainsVelocity: CGFloat = 5.0 / 4
     private let kCloudsVelocity: CGFloat = 2.0 / 4
     private let ForestIIIVelocity: CGFloat = 40.0/4
-    private let ForestIIVelocity: CGFloat = 40.0/4
+    private let ForestIIVelocity: CGFloat = 5.0/4
     private var playerStartPoint = CGPoint.zero
 
     private var skyGradient: SKSpriteNode?
@@ -69,10 +69,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scrollingForestII = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
         if let _ = self.scrollingForestII {
             configureForestIIBackground()
-            scrollingForestII?.setScale(0.30)
-            //scrollingForestII?.position = CGPoint(x: size.width, y: size.height)
+            scrollingForestII?.setScale(0.20)
         }
-        
 
         
         
