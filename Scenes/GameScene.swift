@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         scrollingForestIII = childNode(withName: "scrollingForestIIIBackground") as? ScrollingBackground
         if let _ = self.scrollingForestIII {
-            //scrollingForestII?.setScale(0.50)
+            //scrollingForestII?.setScale(0.70)
             configureForestIIIBackground()
         }
         
