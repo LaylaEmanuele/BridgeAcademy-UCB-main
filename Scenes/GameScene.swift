@@ -68,180 +68,170 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         skyGradient = childNode(withName: "skyGradient") as? SKSpriteNode
 
         scrollingCloudsBackground = childNode(withName: "scrollingCloudsBackground") as? ScrollingBackground
-        if let _ = self.scrollingCloudsBackground {
-            
-            configureArvoreIBackground()
-        }
+                if let _ = self.scrollingCloudsBackground {
+                    
+                    configureArvoreIBackground()
+                }
 
-        scrollingMountainsBackground = childNode(withName: "scrollingMountainsBackground") as? ScrollingBackground
-        if let _ = self.scrollingMountainsBackground {
-            configureArvoreIIBackground()
-        }
-        
-        scrollingCityBackground = childNode(withName: "scrollingCityBackground") as? ScrollingBackground
-        if let _ = self.scrollingCityBackground {
-            configureArbustoIIBackground()
-            scrollingCityBackground?.setScale(0.41)
-        }
-        
-        scrollingCityBackground = childNode(withName: "scrollingForestIIIBackground") as? ScrollingBackground
-        if let _ = self.scrollingForestIII { //arvore
-            configureArvoreIIIBackground()
-            scrollingCityBackground?.setScale(0.41)
+                scrollingMountainsBackground = childNode(withName: "scrollingMountainsBackground") as? ScrollingBackground
+                if let _ = self.scrollingMountainsBackground {
+                    configureArvoreIIBackground()
+                }
+                
+                scrollingCityBackground = childNode(withName: "scrollingCityBackground") as? ScrollingBackground
+                if let _ = self.scrollingCityBackground {
+                    configureArbustoIIBackground()
+                    scrollingCityBackground?.setScale(0.41)
+                }
+                
+                scrollingCityBackground = childNode(withName: "scrollingForestIIIBackground") as? ScrollingBackground
+                if let _ = self.scrollingForestIII { //arvore
+                    configureArvoreIIIBackground()
+                    scrollingCityBackground?.setScale(0.41)
 
-        }
-        
-        scrollingCityBackground = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
-        if let _ = self.scrollingCityBackground { // arbusto
-            configureArbustoIBackground()
-            scrollingCityBackground?.setScale(0.20)
+                }
+                
+                scrollingCityBackground = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
+                if let _ = self.scrollingCityBackground { // arbusto
+                    configureArbustoIBackground()
+                    scrollingCityBackground?.setScale(0.20)
 
-        }
-        
-        scrollingCityBackground = childNode(withName: "scrollingFloor") as? ScrollingBackground
-        if let _ = self.scrollingCityBackground { // arbusto
-            configureFloorBackground()
-        }
-        
-        player = childNode(withName: "player") as? Player
-        if let player = self.player {
-            player.physicsBody?.categoryBitMask = kPlayerCategory
-            player.physicsBody?.contactTestBitMask = kIceCategory
-            player.run()
-        }
-        
-        playerStartPoint = calculatePlayerStartPoint()
+                }
+                
+                player = childNode(withName: "player") as? Player
+                if let player = self.player {
+                    player.physicsBody?.categoryBitMask = kPlayerCategory
+                    player.physicsBody?.contactTestBitMask = kIceCategory
+                    player.run()
+                }
+                
+                playerStartPoint = calculatePlayerStartPoint()
 
-        ice = childNode(withName: "ice") as? SKSpriteNode
-        if let ice = self.ice {
-            ice.physicsBody?.categoryBitMask = kIceCategory
-            ice.physicsBody?.contactTestBitMask = kPlayerCategory
-        }
+                ice = childNode(withName: "ice") as? SKSpriteNode
+                if let ice = self.ice {
+                    ice.physicsBody?.categoryBitMask = kIceCategory
+                    ice.physicsBody?.contactTestBitMask = kPlayerCategory
+                }
 
-        platformsGenerator = PlatformsGenerator()
-        platformsNode = platformsGenerator?.configurePlatformsNode(size: self.size)
+                platformsGenerator = PlatformsGenerator()
+                platformsNode = platformsGenerator?.configurePlatformsNode(size: self.size)
 
-        if let platformsNode = self.platformsNode {
-            addChild(platformsNode)
-            platformsNode.position = self.position
-            platformsNode.zPosition = 2
-            
-        }
+                if let platformsNode = self.platformsNode {
+                    addChild(platformsNode)
+                    platformsNode.position = self.position
+                    platformsNode.zPosition = 2
+                    
+                }
 
-        coinsCounter = childNode(withName: "CoinsCounter") as? CoinsCounter
-        if let coinsCounter = self.coinsCounter {
-            coinsCounter.configure()
-        }
-    }
-
-    override func update(_ currentTime: TimeInterval) {
-        scrollingCityBackground?.update(currentTime: currentTime)
-        scrollingMountainsBackground?.update(currentTime: currentTime)
-        scrollingCloudsBackground?.update(currentTime: currentTime)
-
-        platformsGenerator?.updatePlatform(velocity: kCityScrollingVelocity)
-
-        checkPlayerPosition()
-    }
-
-    //MARK: - Private methods
-    
-    private func configureFloorBackground() {
-        scrollingCityBackground?.velocity = kCityScrollingVelocity
-        scrollingCityBackground?.backgroundImagesNames = ["Floor_1", "Floor_2", "Floor__3", "Floor__4", "AFloor__5", "Floor_6", "Floor_7", "Floor_8"]
-        scrollingCityBackground?.configureScrollingBackground()
-    }
-    
-    private func configureArbustoIBackground() {
-        scrollingCityBackground?.velocity = kCityScrollingVelocity
-        scrollingCityBackground?.backgroundImagesNames = ["Arbusto_I_1", "Arbusto_I_2", "Arbusto_I_3", "Arbusto_I_4", "Arbusto_I_5", "Arbusto_I_6", "Arbusto_I_7", "Arbusto_I_8"]
-        scrollingCityBackground?.configureScrollingBackground()
-    }
-    
-    private func configureArvoreIIIBackground() {
-        scrollingCityBackground?.velocity = kCityScrollingVelocity
-        scrollingCityBackground?.backgroundImagesNames = ["Arvore_III_1", "Arvore_III_2", "Arvore_III_3", "Arvore_III_4", "Arvore_III_5", "Arvore_III_6", "Arvore_III_7", "Arvore_III_8"]
-        scrollingCityBackground?.configureScrollingBackground()
-    }
-    
-    
-    private func configureArbustoIIBackground() {
-        scrollingCityBackground?.velocity = kMountainsVelocity
-        scrollingCityBackground?.backgroundImagesNames = ["Arbusto_II_1", "Arbusto_II_2", "Arbusto_II_3", "Arbusto_II_4", "Arbusto_II_5", "Arbusto_II_6", "Arbusto_II_7", "Arbusto_II_8"]
-        scrollingCityBackground?.configureScrollingBackground()
-    }
-
-    private func configureArvoreIIBackground() {
-        scrollingMountainsBackground?.velocity = kMountainsVelocity
-        scrollingMountainsBackground?.backgroundImagesNames = ["Arvore_II_1", "Arvore_II_2", "Arvore_II_3", "Arvore_II_4", "Arvore_II_5", "Arvore_II_6", "Arvore_II_7", "Arvore_II_8"]
-        scrollingMountainsBackground?.configureScrollingBackground()
-    }
-
-    private func configureArvoreIBackground() {
-        scrollingCloudsBackground?.velocity = kCloudsVelocity
-        scrollingCloudsBackground?.backgroundImagesNames = ["Arvore_I_1", "Arvore_I_2", "Arvore_I_3", "Arvore_I_4", "Arvore_I_5", "Arvore_I_6", "Arvore_I_7", "Arvore_I_8"]
-        scrollingCloudsBackground?.configureScrollingBackground()
-    }
-
-    private func checkPlayerPosition() {
-        guard let player = self.player else { return }
-
-        //Don't allow player to hide on left side
-        if player.position.x < -frame.width / 2 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                player.position = self.playerStartPoint
-            })
-        }
-    }
-
-    private func calculatePlayerStartPoint() -> CGPoint {
-        let x = -frame.width / 2 + frame.width/4
-        let y = frame.height / 2 + frame.height/4
-
-        return CGPoint(x: x, y: y)
-    }
-
-    private func userInteraction() {
-        if jumps < kJumps {
-            jumps += 1
-            player?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 380)) //impulse vs force?
-        }
-    }
-
-    //MARK: - SKPhysicsContactDelegate methods
-
-    func didBegin(_ contact: SKPhysicsContact) {
-        player?.inAir = false
-        player?.run()
-        jumps = 0
-
-        //coins
-        if contact.bodyB.node is Coin {
-            if let coin = contact.bodyB.node as? Coin {
-                coinsCounter?.increaseCounter()
-                coin.collected()
+                coinsCounter = childNode(withName: "CoinsCounter") as? CoinsCounter
+                if let coinsCounter = self.coinsCounter {
+                    coinsCounter.configure()
+                }
             }
+
+            override func update(_ currentTime: TimeInterval) {
+                scrollingCityBackground?.update(currentTime: currentTime)
+                scrollingMountainsBackground?.update(currentTime: currentTime)
+                scrollingCloudsBackground?.update(currentTime: currentTime)
+
+                platformsGenerator?.updatePlatform(velocity: kCityScrollingVelocity)
+
+                checkPlayerPosition()
+            }
+
+            //MARK: - Private methods
+            
+            
+            private func configureArbustoIBackground() {
+                scrollingCityBackground?.velocity = kCityScrollingVelocity
+                scrollingCityBackground?.backgroundImagesNames = ["Arbusto_I_1", "Arbusto_I_2", "Arbusto_I_3", "Arbusto_I_4", "Arbusto_I_5", "Arbusto_I_6", "Arbusto_I_7", "Arbusto_I_8"]
+                scrollingCityBackground?.configureScrollingBackground()
+            }
+            
+            private func configureArvoreIIIBackground() {
+                scrollingCityBackground?.velocity = kCityScrollingVelocity
+                scrollingCityBackground?.backgroundImagesNames = ["Arvore_III_1", "Arvore_III_2", "Arvore_III_3", "Arvore_III_4", "Arvore_III_5", "Arvore_III_6", "Arvore_III_7", "Arvore_III_8"]
+                scrollingCityBackground?.configureScrollingBackground()
+            }
+            
+            
+            private func configureArbustoIIBackground() {
+                scrollingCityBackground?.velocity = kMountainsVelocity
+                scrollingCityBackground?.backgroundImagesNames = ["Arbusto_II_1", "Arbusto_II_2", "Arbusto_II_3", "Arbusto_II_4", "Arbusto_II_5", "Arbusto_II_6", "Arbusto_II_7", "Arbusto_II_8"]
+                scrollingCityBackground?.configureScrollingBackground()
+            }
+
+            private func configureArvoreIIBackground() {
+                scrollingMountainsBackground?.velocity = kMountainsVelocity
+                scrollingMountainsBackground?.backgroundImagesNames = ["Arvore_II_1", "Arvore_II_2", "Arvore_II_3", "Arvore_II_4", "Arvore_II_5", "Arvore_II_6", "Arvore_II_7", "Arvore_II_8"]
+                scrollingMountainsBackground?.configureScrollingBackground()
+            }
+
+            private func configureArvoreIBackground() {
+                scrollingCloudsBackground?.velocity = kCloudsVelocity
+                scrollingCloudsBackground?.backgroundImagesNames = ["Arvore_I_1", "Arvore_I_2", "Arvore_I_3", "Arvore_I_4", "Arvore_I_5", "Arvore_I_6", "Arvore_I_7", "Arvore_I_8"]
+                scrollingCloudsBackground?.configureScrollingBackground()
+            }
+
+            private func checkPlayerPosition() {
+                guard let player = self.player else { return }
+
+                //Don't allow player to hide on left side
+                if player.position.x < -frame.width / 2 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        player.position = self.playerStartPoint
+                    })
+                }
+            }
+
+            private func calculatePlayerStartPoint() -> CGPoint {
+                let x = -frame.width / 2 + frame.width/4
+                let y = frame.height / 2 + frame.height/4
+
+                return CGPoint(x: x, y: y)
+            }
+
+            private func userInteraction() {
+                if jumps < kJumps {
+                    jumps += 1
+                    player?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 380)) //impulse vs force?
+                }
+            }
+
+            //MARK: - SKPhysicsContactDelegate methods
+
+            func didBegin(_ contact: SKPhysicsContact) {
+                player?.inAir = false
+                player?.run()
+                jumps = 0
+
+                //coins
+                if contact.bodyB.node is Coin {
+                    if let coin = contact.bodyB.node as? Coin {
+                        coinsCounter?.increaseCounter()
+                        coin.collected()
+                    }
+                }
+            }
+
+            
+            //MARK: - Touch methods
+
+            override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+                userInteraction()
+            }
+
+            override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+            }
+
+            override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+            }
+
+            override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+            }
+
+
+
+            
+
         }
-    }
-
-    
-    //MARK: - Touch methods
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        userInteraction()
-    }
-
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
-
-
-
-    
-
-}
