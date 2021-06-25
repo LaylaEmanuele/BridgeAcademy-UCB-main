@@ -9,7 +9,6 @@ import SpriteKit
 import GameplayKit
 
 
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //allow double jump
@@ -40,32 +39,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     private var jumps = 0
     
-    var parallaxFloor = SKSpriteNode()
-    
     override func didMove(to view: SKView) {
-        
-        let movF = SKAction.move(by: CGVector(dx: -frame.width, dy: 0), duration: TimeInterval(frame.width/1000)) // sentido do movimento o tempo
-
-        let resetF = SKAction.move(by: CGVector(dx: frame.width, dy: 0), duration:0) //resetar a imagem pro lugar dela
-
-        let repF = SKAction.repeatForever(SKAction.sequence([movF, resetF])) //array com as duas posiçoes da img
-        var i: CGFloat = 0
-
-        while i<2{
-            parallaxFloor = SKSpriteNode(imageNamed: "Floor_Gigantao")
-            parallaxFloor.position = CGPoint(x: 0.244, y: -456.902)
-//            parallaxFloor.size.width = frame.width
-//            parallaxFloor.size.height = frame.height
-            parallaxFloor.zPosition = 0 //profundidade do plano
-            parallaxFloor.run(repF)
-            addChild(parallaxFloor)
-
-            i+=1
-        }
-        
         physicsWorld.contactDelegate = self
         
-        skyGradient = childNode(withName: "skyGradient") as? SKSpriteNode
+        //MARK: - Parallax
+        skyGradient = childNode(withName: "skyGradient") as? SKSpriteNode //chamada do bg
+
+        scrollFloor() // floor
+        
+        scrollLeft(nameImage: "Arvore_III", plano: -2, velocity: 100) // Parallax da arvore III verde escura
+        
 
         scrollingCloudsBackground = childNode(withName: "scrollingCloudsBackground") as? ScrollingBackground
                 if let _ = self.scrollingCloudsBackground {
@@ -84,12 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scrollingCityBackground?.setScale(0.41)
                 }
                 
-                scrollingCityBackground = childNode(withName: "scrollingForestIIIBackground") as? ScrollingBackground
-                if let _ = self.scrollingForestIII { //arvore
-                    configureArvoreIIIBackground()
-                    scrollingCityBackground?.setScale(0.41)
-
-                }
+               
                 
                 scrollingCityBackground = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
                 if let _ = self.scrollingCityBackground { // arbusto
@@ -197,6 +175,81 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 380)) //impulse vs force?
                 }
             }
+    
+    
+    
+    
+    
+    private func scrollFloor(){
+        var parallaxFloor = SKSpriteNode()
+        
+        let movF = SKAction.move(by: CGVector(dx: -frame.width, dy: 0), duration: TimeInterval(frame.width/1000)) // sentido do movimento o tempo
+        
+        let resetF = SKAction.move(by: CGVector(dx: 2532, dy: 0), duration:0) //resetar a imagem pro lugar dela
+        
+        let repF = SKAction.repeatForever(SKAction.sequence([movF, resetF])) //array com as duas posiçoes da img
+        var i: CGFloat = 0
+        
+        while i<2{
+            parallaxFloor = SKSpriteNode(imageNamed: "FloorFinal")
+            parallaxFloor.position = CGPoint(x: 0.244, y: -456.902)
+            //            parallaxFloor.size.width = frame.width
+            //            parallaxFloor.size.height = frame.height
+            parallaxFloor.zPosition = 0 //profundidade do plano
+            parallaxFloor.run(repF)
+            addChild(parallaxFloor)
+            
+            i+=1
+        }
+        
+    }
+    
+    private func scrollLeft(nameImage: String, plano: Double, velocity: Double){
+        var parallaxArvore = SKSpriteNode()
+        
+        let movFA = SKAction.move(by: CGVector(dx: -frame.width, dy: 0), duration: TimeInterval(frame.width/CGFloat(velocity))) // sentido do movimento o tempo
+        
+        let resetFA = SKAction.move(by: CGVector(dx: 2532, dy: 0), duration:0) //resetar a imagem pro lugar dela
+        
+        let repFA = SKAction.repeatForever(SKAction.sequence([movFA, resetFA])) //array com as duas posiçoes da img
+        var j: CGFloat = 0
+        
+        while j<2{
+            parallaxArvore = SKSpriteNode(imageNamed: nameImage)
+            parallaxArvore.position = CGPoint(x: 0, y: 0)
+            //            parallaxFloor.size.width = frame.width
+            //            parallaxFloor.size.height = frame.height
+            parallaxArvore.zPosition = CGFloat(plano) //profundidade do plano
+            parallaxArvore.run(repFA)
+            addChild(parallaxArvore)
+            
+            j+=1
+        }
+    }
+    
+    private func scrollRight(nameImage: String, plano: Double, velocity: Double){
+        var parallaxArvore = SKSpriteNode()
+        
+        let movFA = SKAction.move(by: CGVector(dx: frame.width, dy: 0), duration: TimeInterval(frame.width/CGFloat(velocity))) // sentido do movimento o tempo
+        
+        let resetFA = SKAction.move(by: CGVector(dx: -2532, dy: 0), duration:0) //resetar a imagem pro lugar dela
+        
+        let repFA = SKAction.repeatForever(SKAction.sequence([movFA, resetFA])) //array com as duas posiçoes da img
+        var j: CGFloat = 0
+        
+        while j<2{
+            parallaxArvore = SKSpriteNode(imageNamed: nameImage)
+            parallaxArvore.position = CGPoint(x: 0, y: 0)
+            //            parallaxFloor.size.width = frame.width
+            //            parallaxFloor.size.height = frame.height
+            parallaxArvore.zPosition = CGFloat(plano) //profundidade do plano
+            parallaxArvore.run(repFA)
+            addChild(parallaxArvore)
+            
+            j+=1
+        }
+    }
+    
 
             //MARK: - SKPhysicsContactDelegate methods
 
@@ -234,4 +287,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             
 
-        }
+}
