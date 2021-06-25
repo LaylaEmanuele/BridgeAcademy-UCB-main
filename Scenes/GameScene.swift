@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private let ForestIIIVelocity: CGFloat = 40.0/4
     private let ForestIIVelocity: CGFloat = 5.0/4
     private var playerStartPoint = CGPoint.zero
+    private let FloorVelocity: CGFloat = 40.0 / 4
 
     private var skyGradient: SKSpriteNode?
     private var player: Player?
@@ -29,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var scrollingCloudsBackground: ScrollingBackground?
     private var scrollingForestIII: ScrollingBackground?
     private var scrollingForestII: ScrollingBackground?
+    private var scrollingFloor: ScrollingBackground?
 
     //UI
     private var coinsCounter: CoinsCounter?
@@ -53,24 +55,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let _ = self.scrollingMountainsBackground {
             configureMountainsBackground()
         }
-
+        
         scrollingCityBackground = childNode(withName: "scrollingCityBackground") as? ScrollingBackground
         if let _ = self.scrollingCityBackground {
             configureCityBackground()
-            scrollingCityBackground?.setScale(0.40)
+            scrollingCityBackground?.setScale(0.41)
         }
         
-        scrollingForestIII = childNode(withName: "scrollingForestIIIBackground") as? ScrollingBackground
+        scrollingCityBackground = childNode(withName: "scrollingForestIIIBackground") as? ScrollingBackground
         if let _ = self.scrollingForestIII {
-            //scrollingForestII?.setScale(0.70)
-            configureForestIIIBackground()
+            configureCity02Background()
+            scrollingCityBackground?.setScale(0.41)
+
         }
+
+    
         
-        scrollingForestII = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
+        
+        /*scrollingForestII = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
         if let _ = self.scrollingForestII {
             configureForestIIBackground()
             scrollingForestII?.setScale(0.20)
+        }*/
+        
+        scrollingCityBackground = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
+        if let _ = self.scrollingCityBackground {
+            configureCity01Background()
+            scrollingCityBackground?.setScale(0.20)
+
         }
+        
 
         
         
@@ -121,23 +135,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 
     
-    private func configureForestIIIBackground() {
+    
+    
+    
+    
+    /*private func configureForestIIIBackground() {
         scrollingForestIII?.velocity = ForestIIIVelocity
         scrollingForestIII?.backgroundImagesNames = ["Forest_III_01", "Forest_III_02", "Forest_III_03", "Forest_III_04", "Forest_III_05", "Forest_III_06", "Forest_III_07", "Forest_III_08"]
         scrollingForestIII?.configureScrollingBackground()
-    }
+    }*/
     
-    private func configureForestIIBackground() {
+    /*private func configureForestIIBackground() {
         scrollingForestII?.velocity = ForestIIVelocity
         scrollingForestII?.backgroundImagesNames = ["Forest_II_01", "Forest_II_02", "Forest_II_03", "Forest_II_04", "Forest_II_05", "Forest_II_06", "Forest_II_07", "Forest_II_08"]
         scrollingForestII?.configureScrollingBackground()
+    }*/
+    
+    
+    private func configureCity01Background() {
+        scrollingCityBackground?.velocity = kCityScrollingVelocity
+        scrollingCityBackground?.backgroundImagesNames = ["Forest_II_01", "Forest_II_02", "Forest_II_03", "Forest_II_04", "Forest_II_05", "Forest_II_06", "Forest_II_07", "Forest_II_08"]
+        scrollingCityBackground?.configureScrollingBackground()
+    }
+    
+    private func configureCity02Background() {
+        scrollingCityBackground?.velocity = kCityScrollingVelocity
+        scrollingCityBackground?.backgroundImagesNames = ["Forest_III_01", "Forest_III_02", "Forest_III_03", "Forest_III_04", "Forest_III_05", "Forest_III_06", "Forest_III_07", "Forest_III_08"]
+        scrollingCityBackground?.configureScrollingBackground()
     }
     
     
     
     
     private func configureCityBackground() {
-        scrollingCityBackground?.velocity = kCityScrollingVelocity
+        scrollingCityBackground?.velocity = kMountainsVelocity
         scrollingCityBackground?.backgroundImagesNames = ["city01", "city02", "city03", "city04", "city05", "city06", "city07", "city08"]
         scrollingCityBackground?.configureScrollingBackground()
     }

@@ -11,7 +11,7 @@ import UIKit
 extension UIColor {
 
     class func platformColor() -> UIColor {
-        return UIColor().hexStringToUIColor(hex: "#4B8672")
+        return UIColor().hexStringToUIColor(hex: "#0f291d")
     }
 
     class func floorColor() -> UIColor {
