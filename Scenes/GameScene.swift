@@ -48,54 +48,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scrollingCloudsBackground = childNode(withName: "scrollingCloudsBackground") as? ScrollingBackground
         if let _ = self.scrollingCloudsBackground {
             
-            configureCloudsBackground()
+            configureArvoreIBackground()
         }
 
         scrollingMountainsBackground = childNode(withName: "scrollingMountainsBackground") as? ScrollingBackground
         if let _ = self.scrollingMountainsBackground {
-            configureMountainsBackground()
+            configureArvoreIIBackground()
         }
         
         scrollingCityBackground = childNode(withName: "scrollingCityBackground") as? ScrollingBackground
         if let _ = self.scrollingCityBackground {
-            configureCityBackground()
+            configureArbustoIIBackground()
             scrollingCityBackground?.setScale(0.41)
         }
         
         scrollingCityBackground = childNode(withName: "scrollingForestIIIBackground") as? ScrollingBackground
-        if let _ = self.scrollingForestIII {
-            configureCity02Background()
+        if let _ = self.scrollingForestIII { //arvore
+            configureArvoreIIIBackground()
             scrollingCityBackground?.setScale(0.41)
 
         }
-
-    
-        
-        
-        /*scrollingForestII = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
-        if let _ = self.scrollingForestII {
-            configureForestIIBackground()
-            scrollingForestII?.setScale(0.20)
-        }*/
         
         scrollingCityBackground = childNode(withName: "scrollingForestIIBackground") as? ScrollingBackground
-        if let _ = self.scrollingCityBackground {
-            configureCity01Background()
+        if let _ = self.scrollingCityBackground { // arbusto
+            configureArbustoIBackground()
             scrollingCityBackground?.setScale(0.20)
 
         }
         
-
-        
-        
-        
-
         player = childNode(withName: "player") as? Player
         if let player = self.player {
             player.physicsBody?.categoryBitMask = kPlayerCategory
             player.physicsBody?.contactTestBitMask = kIceCategory
             player.run()
         }
+        
         playerStartPoint = calculatePlayerStartPoint()
 
         ice = childNode(withName: "ice") as? SKSpriteNode
@@ -133,55 +120,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //MARK: - Private methods
     
     
-
-    
-    
-    
-    
-    
-    /*private func configureForestIIIBackground() {
-        scrollingForestIII?.velocity = ForestIIIVelocity
-        scrollingForestIII?.backgroundImagesNames = ["Forest_III_01", "Forest_III_02", "Forest_III_03", "Forest_III_04", "Forest_III_05", "Forest_III_06", "Forest_III_07", "Forest_III_08"]
-        scrollingForestIII?.configureScrollingBackground()
-    }*/
-    
-    /*private func configureForestIIBackground() {
-        scrollingForestII?.velocity = ForestIIVelocity
-        scrollingForestII?.backgroundImagesNames = ["Forest_II_01", "Forest_II_02", "Forest_II_03", "Forest_II_04", "Forest_II_05", "Forest_II_06", "Forest_II_07", "Forest_II_08"]
-        scrollingForestII?.configureScrollingBackground()
-    }*/
-    
-    
-    private func configureCity01Background() {
+    private func configureArbustoIBackground() {
         scrollingCityBackground?.velocity = kCityScrollingVelocity
-        scrollingCityBackground?.backgroundImagesNames = ["Forest_II_01", "Forest_II_02", "Forest_II_03", "Forest_II_04", "Forest_II_05", "Forest_II_06", "Forest_II_07", "Forest_II_08"]
+        scrollingCityBackground?.backgroundImagesNames = ["Arbusto_I_1", "Arbusto_I_2", "Arbusto_I_3", "Arbusto_I_4", "Arbusto_I_5", "Arbusto_I_6", "Arbusto_I_7", "Arbusto_I_8"]
         scrollingCityBackground?.configureScrollingBackground()
     }
     
-    private func configureCity02Background() {
+    private func configureArvoreIIIBackground() {
         scrollingCityBackground?.velocity = kCityScrollingVelocity
-        scrollingCityBackground?.backgroundImagesNames = ["Forest_III_01", "Forest_III_02", "Forest_III_03", "Forest_III_04", "Forest_III_05", "Forest_III_06", "Forest_III_07", "Forest_III_08"]
+        scrollingCityBackground?.backgroundImagesNames = ["Arvore_III_1", "Arvore_III_2", "Arvore_III_3", "Arvore_III_4", "Arvore_III_5", "Arvore_III_6", "Arvore_III_7", "Arvore_III_8"]
         scrollingCityBackground?.configureScrollingBackground()
     }
     
     
-    
-    
-    private func configureCityBackground() {
+    private func configureArbustoIIBackground() {
         scrollingCityBackground?.velocity = kMountainsVelocity
-        scrollingCityBackground?.backgroundImagesNames = ["city01", "city02", "city03", "city04", "city05", "city06", "city07", "city08"]
+        scrollingCityBackground?.backgroundImagesNames = ["Arbusto_II_1", "Arbusto_II_2", "Arbusto_II_3", "Arbusto_II_4", "Arbusto_II_5", "Arbusto_II_6", "Arbusto_II_7", "Arbusto_II_8"]
         scrollingCityBackground?.configureScrollingBackground()
     }
 
-    private func configureMountainsBackground() {
+    private func configureArvoreIIBackground() {
         scrollingMountainsBackground?.velocity = kMountainsVelocity
-        scrollingMountainsBackground?.backgroundImagesNames = ["mountains01", "mountains02", "mountains03", "mountains04", "mountains05", "mountains06", "mountains07", "mountains08"]
+        scrollingMountainsBackground?.backgroundImagesNames = ["Arvore_II_1", "Arvore_II_2", "Arvore_II_3", "Arvore_II_4", "Arvore_II_5", "Arvore_II_6", "Arvore_II_7", "Arvore_II_8"]
         scrollingMountainsBackground?.configureScrollingBackground()
     }
 
-    private func configureCloudsBackground() {
+    private func configureArvoreIBackground() {
         scrollingCloudsBackground?.velocity = kCloudsVelocity
-        scrollingCloudsBackground?.backgroundImagesNames = ["clouds01", "clouds02", "clouds03", "clouds04", "clouds05", "clouds06", "clouds07", "clouds08"]
+        scrollingCloudsBackground?.backgroundImagesNames = ["Arvore_I_1", "Arvore_I_2", "Arvore_I_3", "Arvore_I_4", "Arvore_I_5", "Arvore_I_6", "Arvore_I_7", "Arvore_I_8"]
         scrollingCloudsBackground?.configureScrollingBackground()
     }
 
