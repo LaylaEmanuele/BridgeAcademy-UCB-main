@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F561B222685882700B85CDA /* Floor_Gigantao.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F561B212685882700B85CDA /* Floor_Gigantao.png */; };
 		CD46AC2E267BB9D400BF11C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD46AC2D267BB9D400BF11C2 /* AppDelegate.swift */; };
 		CD46AC30267BB9D400BF11C2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CD46AC2F267BB9D400BF11C2 /* GameScene.sks */; };
 		CD46AC32267BB9D400BF11C2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CD46AC31267BB9D400BF11C2 /* Actions.sks */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F561B212685882700B85CDA /* Floor_Gigantao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Floor_Gigantao.png; path = ../Floor_Gigantao.png; sourceTree = "<group>"; };
 		CD46AC2A267BB9D400BF11C2 /* BridgeRunGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeRunGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD46AC2D267BB9D400BF11C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD46AC2F267BB9D400BF11C2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 		CD46AC21267BB9D400BF11C2 = {
 			isa = PBXGroup;
 			children = (
+				9F561B212685882700B85CDA /* Floor_Gigantao.png */,
 				CD63C2BB2684257D00400120 /* Menu */,
 				CD46AC49267BBAB700BF11C2 /* SuportingFiles */,
 				CD46AC48267BBA7F00BF11C2 /* StoryBoards */,
@@ -223,6 +226,7 @@
 			files = (
 				CD46AC39267BB9D400BF11C2 /* Main.storyboard in Resources */,
 				CD46AC30267BB9D400BF11C2 /* GameScene.sks in Resources */,
+				9F561B222685882700B85CDA /* Floor_Gigantao.png in Resources */,
 				CD46AC3B267BB9D500BF11C2 /* Assets.xcassets in Resources */,
 				CD46AC32267BB9D400BF11C2 /* Actions.sks in Resources */,
 			);

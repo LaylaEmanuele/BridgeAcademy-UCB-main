@@ -40,7 +40,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     private var jumps = 0
     
+    var parallaxFloor = SKSpriteNode()
+    
     override func didMove(to view: SKView) {
+        
+        let movF = SKAction.move(by: CGVector(dx: -frame.width, dy: 0), duration: TimeInterval(frame.width/1000)) // sentido do movimento o tempo
+
+        let resetF = SKAction.move(by: CGVector(dx: frame.width, dy: 0), duration:0) //resetar a imagem pro lugar dela
+
+        let repF = SKAction.repeatForever(SKAction.sequence([movF, resetF])) //array com as duas posiçoes da img
+        var i: CGFloat = 0
+
+        while i<2{
+            parallaxFloor = SKSpriteNode(imageNamed: "Floor_Gigantao")
+            parallaxFloor.position = CGPoint(x: 0.244, y: -456.902)
+//            parallaxFloor.size.width = frame.width
+//            parallaxFloor.size.height = frame.height
+            parallaxFloor.zPosition = 0 //profundidade do plano
+            parallaxFloor.run(repF)
+            addChild(parallaxFloor)
+
+            i+=1
+        }
+        
         physicsWorld.contactDelegate = self
         
         skyGradient = childNode(withName: "skyGradient") as? SKSpriteNode
@@ -74,6 +96,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             configureArbustoIBackground()
             scrollingCityBackground?.setScale(0.20)
 
+        }
+        
+        scrollingCityBackground = childNode(withName: "scrollingFloor") as? ScrollingBackground
+        if let _ = self.scrollingCityBackground { // arbusto
+            configureFloorBackground()
         }
         
         player = childNode(withName: "player") as? Player
@@ -119,6 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     //MARK: - Private methods
     
+    private func configureFloorBackground() {
+        scrollingCityBackground?.velocity = kCityScrollingVelocity
+        scrollingCityBackground?.backgroundImagesNames = ["Floor_1", "Floor_2", "Floor__3", "Floor__4", "AFloor__5", "Floor_6", "Floor_7", "Floor_8"]
+        scrollingCityBackground?.configureScrollingBackground()
+    }
     
     private func configureArbustoIBackground() {
         scrollingCityBackground?.velocity = kCityScrollingVelocity
