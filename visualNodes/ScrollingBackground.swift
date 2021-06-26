@@ -19,6 +19,8 @@ class ScrollingBackground: SKSpriteNode {
         
         for i in 0...backgroundImagesNames.count - 1 {
             let node = SKSpriteNode(imageNamed: backgroundImagesNames[i])
+            let texture = SKTexture(imageNamed: backgroundImagesNames[i])
+            texture.filteringMode = .nearest
 
             let multiplier = node.size.width / node.size.height
             node.size = CGSize(width: size.height * multiplier, height: size.height)

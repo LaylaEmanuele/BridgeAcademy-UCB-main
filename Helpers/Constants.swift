@@ -10,7 +10,7 @@ import UIKit
 
 let kPlatformHeight: CGFloat = 40.0
 let kCoinWidthHeight: CGFloat = 120
-
+let kObstacleHeight: CGFloat = 70.0
 
 
 let kPlayerCategory: UInt32 = 1

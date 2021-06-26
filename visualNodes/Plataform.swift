@@ -33,6 +33,9 @@ class Platform: SKSpriteNode {
 
         for _ in 0...numberOfCoins {
             let coin = Coin(imageNamed: "Coin")
+            let texture = SKTexture(imageNamed: "Coin")
+            texture.filteringMode = .nearest
+            
             coin.size = CGSize(width: kCoinWidthHeight, height: kCoinWidthHeight)
             coin.configure()
 

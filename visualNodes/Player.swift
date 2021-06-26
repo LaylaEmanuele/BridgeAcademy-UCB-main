@@ -34,6 +34,7 @@ func getWindTextures() -> [SKTexture] {
     for i in 1...6 {
         
         let texture = SKTexture(imageNamed: "Player_\(i)")
+        //Como é uma pixel art este comando abaixo retira o anti-alising
         texture.filteringMode = .nearest
         textures.append(texture)
         

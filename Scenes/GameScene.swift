@@ -19,7 +19,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private let ForestIIIVelocity: CGFloat = 40.0/4
     private let ForestIIVelocity: CGFloat = 5.0/4
     private var playerStartPoint = CGPoint.zero
-    private let FloorVelocity: CGFloat = 40.0 / 4
 
     private var skyGradient: SKSpriteNode?
     private var player: Player?
@@ -30,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var scrollingForestIII: ScrollingBackground?
     private var scrollingForestII: ScrollingBackground?
     private var scrollingFloor: ScrollingBackground?
+    var arrow = SKSpriteNode(imageNamed: "Flecha")
+   
 
     //UI
     private var coinsCounter: CoinsCounter?
@@ -44,10 +45,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //MARK: - Parallax
         skyGradient = childNode(withName: "skyGradient") as? SKSpriteNode //chamada do bg
+        
+        
 
         scrollFloor() // floor
         
         scrollLeft(nameImage: "Arvore_III", plano: -2, velocity: 100) // Parallax da arvore III verde escura
+        
+
+        
+         
+
         
 
         scrollingCloudsBackground = childNode(withName: "scrollingCloudsBackground") as? ScrollingBackground
@@ -116,6 +124,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                 checkPlayerPosition()
             }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
             //MARK: - Private methods
             
@@ -225,6 +242,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             j+=1
         }
+    }
+    
+    private func addArrow() {
+        let random = arc4random_uniform(UInt32(self.size.width))
+        arrow.position.y = self.size.height
+        arrow.position.x = CGFloat(random)
+        arrow.setScale(2)
+        
+        arrow.name = "arrow"
+        arrow.physicsBody = SKPhysicsBody(circleOfRadius: arrow.size.width/2)
+        arrow.physicsBody?.contactTestBitMask = kPlayerCategory
+//        let moveAction = SKAction.moveTo(x: 0, duration: 5)
+//        let deleteAction = SKAction.removeFromParent()
+//
+//        arrow.run(SKAction.sequence([moveAction, deleteAction]))
+        addChild(arrow)
+        
     }
     
     private func scrollRight(nameImage: String, plano: Double, velocity: Double){
