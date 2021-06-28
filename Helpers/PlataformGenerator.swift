@@ -12,11 +12,11 @@ import GameplayKit
 class PlatformsGenerator {
 
     private let kMaxPlatformsOnScreen = 8
-    private let kMinSpace: Int = 120
+    private let kMinSpace: Int = 140
 
     private let randomDistribPlatformWidth = GKRandomDistribution(lowestValue: 150, highestValue: 500)
     private let randomDistribPlatformPositionX = GKRandomDistribution(lowestValue: 0, highestValue: 300)
-    private let randomDistribPlatformPositionY = GKRandomDistribution(lowestValue: -250, highestValue: 80)
+    private let randomDistribPlatformPositionY = GKRandomDistribution(lowestValue: -250, highestValue: 90)
 
     private var platforms = [Platform]()
     private var parentNode = SKSpriteNode()

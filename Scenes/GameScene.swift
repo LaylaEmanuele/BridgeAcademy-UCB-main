@@ -189,7 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             private func userInteraction() {
                 if jumps < kJumps {
                     jumps += 1
-                    player?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 380)) //impulse vs force?
+                    player?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 390)) //impulse vs force?
                 }
             }
     
