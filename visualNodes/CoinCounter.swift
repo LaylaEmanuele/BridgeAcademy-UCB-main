@@ -28,6 +28,7 @@ class CoinsCounter: SKSpriteNode {
 
     private func configureLabel() {
         label = childNode(withName: "coinsLabel") as? SKLabelNode
+        
 
         if let label = self.label {
             label.fontColor = UIColor.coinsTextColor()
